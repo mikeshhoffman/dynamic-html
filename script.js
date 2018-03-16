@@ -6,17 +6,35 @@ var products = [
 
 function buildListings(){
   // select element with id "target"
-
+  var container = document.querySelector("#target")
   // give it a class of "parent"
-
-
+  container.classList.add("parent")
+  
   // loop through the products array, and for each, a listing like:
   // <div>
-  //   <h2>Product Name</h2>
-  //   <p>Product Price</p>
+  //   <h2>productname</h2>  ie. <h2>products[i].name</h2>
+  //   <p>productprice</p>  ie. <h2>products[i].price</h2>
   //   <img src="" alt="">
   // </div>
+  for(var i=0; i<products.length; i++){
+  //console.log(products[i].name)
+    var divV = document.createElement("div")
+    
+    var h2V = document.createElement("h2")
+    h2V.innerHTML = products[i].name
+    
+    var pV = document.createElement("p")
+    pV.innerHTML = products[i].price
+    
+    var imgV = document.createElement("img")
+    imgV.setAttribute("src", products[i].image)
+    imgV.setAttribute("alt", products[i].name)
+    
+    divV.appendChild(h2V)
+    divV.appendChild(imgV)
+    divV.appendChild(pV)
+    container.appendChild(divV)
+  }
 }
 
 buildListings()
-
